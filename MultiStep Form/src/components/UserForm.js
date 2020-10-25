@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import FormUserDetails from "./FormUserDetails";
+import FormPersonalDetails from "./FormPersonalDetails";
+import Confirm from './Confirm';
+import Sucess from './Sucess';
 
 class UserForm extends Component {
     constructor(props) {
@@ -43,14 +46,30 @@ class UserForm extends Component {
         switch (step) {
             case 1:
                 return (
-                    <FormUserDetails handleChange={this.handleChange} nextStep={this.nextStep} values={values} />
+                    <FormUserDetails
+                        handleChange={this.handleChange}
+                        nextStep={this.nextStep}
+                        values={values} />
                 )
             case 2:
-                return <h1>Form User Details</h1>
+                return (
+                    <FormPersonalDetails
+                        handleChange={this.handleChange}
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        values={values} />
+                )
             case 3:
-                return <h1>Confirm</h1>
+                return (
+                    <Confirm
+                        nextStep={this.nextStep}
+                        prevStep={this.prevStep}
+                        values={values} />
+                )
             case 4:
-                return <h1>Sucess</h1>
+                return (
+                    <Sucess />
+                )
             default:
                 return;
         }
