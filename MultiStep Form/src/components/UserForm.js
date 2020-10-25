@@ -14,8 +14,16 @@ class UserForm extends Component {
             email: '',
             occupation: '',
             bio: '',
-            city: ''
+            city: '',
+            touched: {
+                firstName: false,
+                lastName: false,
+                email: false
+            }
         }
+        this.handleBlur = this.handleBlur.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.validateValues = this.validateValues.bind(this);
     }
 
     nextStep = () => {
@@ -38,6 +46,41 @@ class UserForm extends Component {
         });
     }
 
+    handleBlur = (field) => (evt) => {
+        this.setState({
+            touched: { ...this.state.touched, [field]: true }
+        });
+    }
+
+
+    validateValues = (firstName, lastName, email) => {
+        let errors = {
+            firstName: '',
+            lastName: '',
+            email: '',
+        };
+        if (this.state.touched.firstName && firstName.length < 3) {
+            errors.firstName = 'First Name must be at least 3 charcters long'
+        }
+        else if (this.state.touched.firstName && firstName.length > 10) {
+            errors['firstName'] = 'First Name must be at most 10 charcters long'
+        }
+        if (this.state.touched.lastName && lastName.length < 3) {
+            errors['lastName'] = 'Last Name must be at least 3 charcters long'
+        }
+        else if (this.state.touched.lastName && lastName.length > 10) {
+            errors['lastName'] = 'Last Name must be at most 10 charcters long'
+        }
+
+        if (this.state.touched.email && email.split('').filter(x => x === '@').length !== 1) {
+            errors.email = 'Email must contain @';
+        }
+        return errors;
+    }
+
+
+
+
     render() {
         const { step } = this.state;
         const { firstName, lastName, email, occupation, city, bio } = this.state;
@@ -47,9 +90,11 @@ class UserForm extends Component {
             case 1:
                 return (
                     <FormUserDetails
+                        handleBlur={this.handleBlur}
                         handleChange={this.handleChange}
                         nextStep={this.nextStep}
-                        values={values} />
+                        values={values}
+                        validateValues={this.validateValues} />
                 )
             case 2:
                 return (
