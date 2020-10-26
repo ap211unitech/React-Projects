@@ -18,12 +18,15 @@ function Home() {
         const response = await fetch(example);
         let recipe = await response.json();
         setRecipes(recipe.hits);
+        // console.log(recipe.hits)
     }
 
 
     return (
         <div>
-            Arjun Porwal
+            {recipes.map(recipe => {
+               return  <Recipe recipe={recipe.recipe} />
+            })}
         </div>
     )
 }
