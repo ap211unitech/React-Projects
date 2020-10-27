@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Button, Input } from '@material-ui/core';
+import { Box, Button, Input } from '@material-ui/core';
 
 
 function SearchRecipe({ search }) {
@@ -11,14 +11,14 @@ function SearchRecipe({ search }) {
     }
 
     return (
-        <Container>
+        <Box display="flex" justifyContent="center" m={2}>
             <form onSubmit={handleSubmit}>
                 <Input value={text} onChange={e => setText(e.target.value)} placeholder="Search..." />
                 <Button type="submit" color="primary" >
                     Search
                 </Button>
             </form>
-        </Container>
+        </Box>
     )
 }
 
