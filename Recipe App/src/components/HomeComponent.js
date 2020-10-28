@@ -3,6 +3,7 @@ import Recipe from "./Recipe";
 import { Box, CircularProgress } from '@material-ui/core';
 import SearchRecipe from "./SearchRecipe";
 
+
 const API_ID = "4f7e0920"
 const API_KEY = "93d11fb1afcd36f34ce1a4bb7b30deb3"
 
@@ -12,6 +13,7 @@ function Home() {
     const [recipes, setRecipes] = useState([]);
     const [query, setQuery] = useState('chicken');
     const [isLoading, setLoading] = useState(true);
+
 
     useEffect(() => {
         setLoading(true);
@@ -35,7 +37,7 @@ function Home() {
 
             {!isLoading && recipes.length === 0 &&
                 <Box display="flex" justifyContent="center">
-                    <h1>No Image Found..</h1>
+                    <h1>No Such Recipe Found..</h1>
                 </Box>
             }
 
@@ -44,13 +46,11 @@ function Home() {
                     <CircularProgress />
                 </Box> :
                 <div>
-                    <Box display="flex" justifyContent="center" flexWrap="wrap" alignItems="center" >
-                        {recipes.map(recipe => (
-                            <Box key={recipe.recipe.calories} m={2}>
-                                <Recipe recipe={recipe.recipe} />
-                            </Box>
-                        ))}
-                    </Box>
+                    {recipes.map(recipe => (
+                        <Box key={recipe.recipe.calories} m={2}>
+                            <Recipe recipe={recipe.recipe} />
+                        </Box>
+                    ))}
                 </div>
             }
         </div>
@@ -58,4 +58,4 @@ function Home() {
     )
 }
 
-export default Home
+export default Home 

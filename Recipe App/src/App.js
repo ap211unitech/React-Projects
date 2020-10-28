@@ -1,8 +1,15 @@
 import Home from "./components/HomeComponent";
+import { BrowserRouter, Switch, Redirect, Route } from "react-router-dom";
+
 
 function App() {
   return (
-    <Home />
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Redirect to="/" />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
