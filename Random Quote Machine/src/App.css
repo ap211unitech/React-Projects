@@ -1,3 +1,54 @@
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+.content {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .wrapper {
-  
+  display: block;
+  width: 40%;
+  margin: 220px auto auto auto;
+}
+
+.quoteBox {
+  padding: 40px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.quoteText {
+  font-size: 1.75em;
+  text-align: justify;
+}
+
+.quoteAuthor span {
+  float: right;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+.button button {
+  outline: none;
+  background-color: none;
+  border: none;
+  float: right;
+  color: white;
+  padding: 8px;
+  margin-top: 4px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: medium;
+}
+
+.footer {
+  text-align: center;
+  color: white;
+  font-size: large;
+  margin: 30px;
 }
