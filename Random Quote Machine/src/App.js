@@ -2,13 +2,15 @@ import Axios from "axios";
 import { useState, useEffect } from "react";
 import "./App.css";
 
+
+
 function randomIntFromInterval(min, max) { // min and max included 
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function App() {
 
-  const [style, setStyle] = useState("");
+  const [style, setStyle] = useState("rgb(255,255,255");
   const [currentQuote, setQuote] = useState({});
   const [clicked, setClicked] = useState(true);
 
@@ -33,7 +35,6 @@ function App() {
       <div className="wrapper">
         <div className="quoteBox">
           <div className="quoteText">
-            {/* <FontAwesome className="fa fa-quote-left fa-5x"></FontAwesome> */}
             <span id="text" style={{ color: style }}>
               {currentQuote.text}
             </span>
